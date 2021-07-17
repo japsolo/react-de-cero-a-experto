@@ -24,13 +24,14 @@ cd react-de-cero-a-experto
 
 3. **Crea la branch de la clase:**
 
-Cómo cada clase tiene su respectiva `branch`, deberás crear la branch respectiva así:
+Cómo cada clase tiene su respectiva `branch`, deberás crear la branch respectiva (ten presente que esto lo deberás hacer **SIEMPRE** ubicado en la rama `master`) así:
 
 ```
 git checkout -b clase-02
 ```
 
 > *Toma precaución de reemplazar el `02` por el número de clase que quieras.*
+
 
 4. **Baja los archivos de la `branch`:**
 
@@ -71,5 +72,14 @@ yarn start
 ```
 
 Y listo, podrás acceder al navegador a [http://localhost:3000](http://localhost:3000).
+
+---
+
+## ⚠️ **WARNING** ⚠️
+
+Si llegas a modificar algo de estos archivos. Antes de llevar a cabo del paso 3 en adelante, ten presente de ejecutar:
+
+1. `git add .`
+2. `git commit -m "local changes"`
 
 **Proudly made by:** ¡[The Fullstack Devs](https://instagram.com/thefullstackdevs)!
