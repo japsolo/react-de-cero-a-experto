@@ -4,6 +4,8 @@ El presente repositorio tiene como objetivo ir recopilando los archivos vistos e
 
 Cada clase está separada en su respectiva `branch`.
 
+---
+
 Para que puedas usar estos archivos, sigue estos pasos:
 
 1. **Clona este repositorio:**
