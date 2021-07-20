@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+.header {
+  background-color: olive;
+  color: salmon;
+}
+
+.text-danger {
+  color: #f00;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
