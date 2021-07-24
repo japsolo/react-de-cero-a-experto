@@ -11,6 +11,9 @@ import Title from './components/Title';
 import User from './components/User';
 import UsersList from './components/UsersList';
 
+// Class Component
+import Counter from './components/Counter';
+
 // Data
 import db from './data/usersDB.json';
 
@@ -24,6 +27,8 @@ function App() {
   return (
     <div className="App">
       <Header />
+
+      <Counter />
 
       <UsersList listado={db} />
 
