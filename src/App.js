@@ -25,7 +25,7 @@ function App() {
     <div className="App">
       <Header />
 
-      <UsersList listado={db} />
+      <UsersList listado={db} title='Listado de personajes' />
 
       <Title fecha="20 de julio" pais="Filipinas" />
       
