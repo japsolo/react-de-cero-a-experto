@@ -1,73 +1,41 @@
 // Assets
 import './assets/css/App.css';
-import laImagenDelLogo from './assets/images/logo.svg';
-import Leia from './assets/images/leia.jpg';
-import Spiderman from './assets/images/spiderman.jpg';
-import WalterWhite from './assets/images/walter-white.jpg';
-
-// Components
-import Header from './components/Header';
-import Title from './components/Title';
-import User from './components/User';
-import UsersList from './components/UsersList';
 
 // Class Component
 import Counter from './components/Counter';
+import RickMorty from './components/RickMorty';
 
-// Data
-import db from './data/usersDB.json';
-
-let jane = {
-  name: "Jane Doe",
-  email: "jdoe@gmail.com",
-  bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid asperiores nisi tempora, inventore minima ipsa, maxime distinctio exercitationem unde omnis odit hic earum expedita commodi optio, repellendus veritatis debitis eius."
-}
+let n = 15;
 
 function App() {
-  return (
-    <div className="App">
-      <Header />
 
-      <Counter />
+	const sumar15Handler = () => {
+		n += 15;
+		console.log(n);
+	}
 
-      <UsersList listado={db} />
+	return (
+		<div className="App">
+			<RickMorty/>
 
-      <Title fecha="20 de julio" pais="Filipinas" />
-      
-      <Title fecha="19 de julio" pais="Argentina">
-        <del className="text-danger">A ver si esto se ve</del>
-        <br />
-        <strong>Otra más</strong>
-        <br />
-        <em>uno más</em>
-      </Title>
-      
-      <User {...jane} />
-
-      <br />
-      <br />
-      
-      <header className="App-header">
-        <img src={laImagenDelLogo} className="App-logo" alt="logo" />
-        <img src='/images/yoda.jpg' alt="Yoda" />
-        <img src={Leia} alt="" />
-        <img src={Spiderman} alt="" />
-        <img src={WalterWhite} alt="" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <a className="App-link" href="https://youtube.com">Ir a YouTube</a>
-      </header>
-    </div>
-  );
+			<Counter />
+			<hr />
+			<ul>
+				<li><b>onClick</b></li>
+				<li><b>onSubmit</b></li>
+				<li><b>onFocus</b></li>
+				<li><b>onBlur</b></li>
+				<li><b>onChange</b></li>
+				<li><b>onInput</b></li>
+				<li><b>onMouseHover</b></li>
+				<li><b>onMouseOut</b></li>
+				<li><b>onWindowScroll</b></li>
+			</ul>
+			<hr />
+			<h3>{n}</h3>
+			<button onClick={ sumar15Handler }>Sumar 15</button>
+		</div>
+	);
 }
 
 export default App;

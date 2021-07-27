@@ -17,12 +17,15 @@ class Counter extends Component {
 		const { day, count } = this.state;
 
 		let p = document.querySelector('#dayParagraph');
-		p.removeAttribute('style');
+		
+		if (p) {
+			p.removeAttribute('style');
 
-		if(day === 'Saturday') {
-			p.style.backgroundColor = 'Orange';
+			if(day === 'Saturday') {
+				p.style.backgroundColor = 'Orange';
+			}
 		}
-
+		
 		if(count === 20) {
 			window.alert('Llegas a veinte');
 		}
@@ -32,6 +35,20 @@ class Counter extends Component {
 
 	componentWillUnmount () {
 		console.log('Component Will Unmount!');
+	}
+
+	changeDayHandler () {
+		const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+		const choosenDay = weekDays[Math.floor(Math.random() * weekDays.length)];
+		this.setState({ day: choosenDay });
+	}
+
+	increment = () => {
+		this.setState({ count: this.state.count + 1 })
+	}
+
+	logInConsole () {
+		console.log(Math.floor(Math.random() * 10));
 	}
 
 	render () {
@@ -44,17 +61,15 @@ class Counter extends Component {
 				{ !day && <p>Elegí un día por favor</p> }
 				{ day && <p id="dayParagraph">{day}</p> }
 				<button 
-					onClick={ () => this.setState({ count: count + 1 }) }
+					onClick={ this.increment }
 				> Increment Count! </button>
 				
 				<button 
-					onClick={ () => {
-						const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-						const choosenDay = weekDays[Math.floor(Math.random() * weekDays.length)];
-						this.setState({ day: choosenDay })
-					}}
+					onClick={ () => this.changeDayHandler() }
 				> Change day! </button>
 				<hr />
+
+				<button onClick={ this.logInConsole }>Haceme click</button>
 			</div>
 		)
 	}
