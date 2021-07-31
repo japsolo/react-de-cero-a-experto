@@ -1,37 +1,16 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 
 // Helpers
 import { getData } from '../../helpers'; 
+import useCharacters from '../../hooks/useCharacters'; 
 
 const RickMorty = () => {
-	const [ isLoading, setIsLoading ] = useState(true);
-	const [ characters, setCharacters ] = useState([]);
 	const [ notResults, setNotResults ] = useState(false);
+	// Custom Hook
+	const { characters, setCharacters, isLoading, setIsLoading } = useCharacters();
 
 	let title = useRef();
 	let inputField = useRef();
-
-	// componentDidMount()
-	useEffect( () => {
-		getData('https://rickandmortyapi.com/api/character').then(data => {
-			setCharacters(data.results);
-			setIsLoading(false);
-		});
-
-		localStorage.setItem('developer', JSON.stringify({name: 'Javi', age: 28}));
-
-		// componentWillUnmount()
-		return () => {
-			console.log('Component unmounted');
-			localStorage.removeItem('developer');
-		};
-	}, [] );
-
-	// componentDidUpdate()
-	useEffect( () => {
-		console.log(isLoading);
-		console.log(characters);
-	}, [isLoading, characters] );
 
 	const changeTitle = () => {
 		let { current: h2 } = title; // a la key current le ponemos el alias h2
