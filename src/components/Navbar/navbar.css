@@ -1,0 +1,25 @@
+.main-navbar ul {
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.main-navbar li {
+	background-color: #222;
+	border: 1px solid #fff;
+	width: 25%;
+}
+
+.main-navbar a {
+	display: block;
+	text-decoration: none;
+	color: #fff;
+	text-align: center;
+	padding: 10px;
+}
+
+.main-navbar a:hover {
+	background-color: salmon;
+}
