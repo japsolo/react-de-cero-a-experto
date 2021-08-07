@@ -1,8 +1,7 @@
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import App from './App';
 
 const container = document.getElementById('root');
 

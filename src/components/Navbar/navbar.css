@@ -9,7 +9,7 @@
 .main-navbar li {
 	background-color: #222;
 	border: 1px solid #fff;
-	width: 25%;
+	width: auto;
 }
 
 .main-navbar a {
