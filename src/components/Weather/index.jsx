@@ -26,7 +26,7 @@ export default function Weather ({ initialCity }) {
 						setIsLoading(false);
 						setCityExist(true);
 					}
-					if (data.cod == 404) {
+					if (Number(data.cod) === 404) {
 						setCityWeather(null);
 						setIsLoading(false);
 						setCityExist(false);
@@ -38,15 +38,17 @@ export default function Weather ({ initialCity }) {
 	useEffect(() => {
 		myFunction();
 
-		return () => {
-			console.log('El componente Weather se acaba de desmontar');
-		}
+		return () => console.log('El componente Weather se acaba de desmontar');
 	}, []);
 	
-	// useEffect(() => {
-	// 	console.log('Datos del clima de: ' + city);
-	// 	console.log(cityWeather ? cityWeather : 'No hay datos para esta ciudad');
-	// }, [city, cityWeather]);
+	useEffect(() => {
+		
+	}, []);
+	
+	useEffect(() => {
+		console.log('Datos del clima de: ' + city);
+		console.log(cityWeather ? cityWeather : 'No hay datos para esta ciudad');
+	}, [city, cityWeather]);
 
 	const searchCityWeather = e => {
 		e.preventDefault();

@@ -8,6 +8,10 @@ import Navbar from './components/Navbar';
 
 import Home from './pages/Home';
 import Products from './pages/Products';
+import About from './pages/About';
+import Register from './pages/Register';
+import Profile from './pages/Profile';
+import Users from './pages/Users';
 import NotFound from './pages/NotFound';
 
 import Weather from './components/Weather';
@@ -25,6 +29,12 @@ function App() {
 				
 				<Switch>
 					<Route exact path="/" component={ Home } />
+					
+					<Route path="/register" component={ Register } />
+					
+					<Route path="/users/:id" component={ Profile } />
+					
+					<Route path="/users" component={ Users } />
 				
 					{/* <Route path="/weather" component={ Weather } /> */}
 				
@@ -36,7 +46,9 @@ function App() {
 
 					<Route path="/rick-morty" component={ RickMorty } />
 					
-					<Route path="/products" component={ Products } />
+					<Route path="/about" component={ About } />
+					
+					<Route path="/products/:id/:name?" component={ Products } />
 
 					<Route component={ NotFound } />
 				</Switch>

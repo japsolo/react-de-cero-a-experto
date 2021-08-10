@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "name": "Juana",
+      "email": "juana@gmail.com",
+      "password": "sdfsdfsdf",
+      "id": 1
+    },
+    {
+      "name": "Ana",
+      "email": "anita@spa.com",
+      "password": "2345678fghfghf",
+      "id": 3
+    },
+    {
+      "name": "Pedro",
+      "email": "pep@mail.com",
+      "password": "asdasdajsdh",
+      "id": 4
+    },
+    {
+      "name": "Javi ",
+      "email": "javi@gmail.com",
+      "password": "eyrujhfgteyrth",
+      "id": 5
+    },
+    {
+      "name": "Lorena",
+      "email": "lore@gmail.com",
+      "password": "sdfsdf",
+      "id": 6
+    },
+    {
+      "name": "Pedro",
+      "email": "juanpdev@gmail.com",
+      "password": "sasdas",
+      "id": 7
+    }
+  ]
+}
