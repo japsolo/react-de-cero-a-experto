@@ -1,9 +1,0 @@
-@import '../../scss/variables.scss';
-@import '../../scss/mixins.scss';
-
-.banner {
-	width: $width;
-	background-color: $bgColor;
-	padding: 10px;
-	@include display($jc: flex-end, $display: flex);
-}

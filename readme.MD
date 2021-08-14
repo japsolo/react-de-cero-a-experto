@@ -1,70 +1,99 @@
-# Getting Started with Create React App
+# Redux en React 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[https://es.redux.js.org/docs/introduccion/tres-principios.html](Documentación oficial)
 
-## Available Scripts
+- Store: almacena todo(s) el estado(s) de la aplicación, solo hay uno por aplicación. La fuente de verdad.
+- Reducers: son funciones que saben que hacer con el estado, son quienes manipulan al estado.
+- Actions: funciones que retornan objetos literales, tiene las keys type y payload (datos).
+- Dispatch: ejecuta la acción y permite que se inicie la actualización del state.
+- Suscribe: solo para el store, es un event listener.
 
-In the project directory, you can run:
+## Instalación
 
-### `yarn start`
+Solo necesitamos instalar las siguientes dependencias: `redux react-redux redux-thunk`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Crear el store
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```js
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
 
-### `yarn test`
+import reducer from './reducers';
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+const store = createStore(
+	reducer,
+	compose(
+		applyMiddleware(thunk)
+		// redux dev tools
+		typeof window === 'object' &&
+		typeof window.__REDUX_DEVTOOLS_EXTENSION__ !== 'undefined' ?
+		window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
+	)
+);
 
-### `yarn build`
+export default store;
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Creando los reducers
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Crear la carpeta `reducers` con un archivo `index.js` y varios archivos por reducer. Este archivo `index.js`se ve así:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```js
+import { combineReducers } from 'redux';
 
-### `yarn eject`
+// Reducers
+import productsReducer from './productsReducer';
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+export default combineReducers({
+	products: productsReducer,
+})
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Crear el archivo reducer por cada entidad que deseemos manejar en nuestra aplicación. Este archivo es quien va a tener el state y la "lógica" para modificarlo. Este archivo se ve así:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```js
+// Cada reducer tiene su propio state
+const initialState = {
+	productsList: [],
+	loading: false,
+}
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+function productsReducer (state = initialState, action) {
+	switch (action.type) {
+		case 'ADD_PRODUCT':
+			return {
+				...
+			}
+		case 'DELETE_PRODUCT':
+			return {
+				...
+			}
+		default:
+			return state;
+	}
+}
 
-## Learn More
+export default productsReducer;
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Conectando la App con el Store
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```js
+import { Provider } from 'react-redux';
+import store from './store';
 
-### Code Splitting
+// Dentro del return
+<Provider store={store}>
+	... contenido JSX
+</Provider>
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Crear el action de cada reducer
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```js
+export function createProductsActions () {
+	return () => {
+		console.log('Estamos dentro del Action de Create Products');
+	}
+}
+```

@@ -1,8 +1,0 @@
-@mixin display ($display, $jc: '', $ai: stretch) {
-	display: $display;
-
-	@if ($display=='flex') {
-		justify-content: $jc;
-		align-items: $ai;
-	}
-}
